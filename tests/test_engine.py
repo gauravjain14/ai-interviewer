@@ -19,3 +19,16 @@ def test_engine_reuses_prefix_and_tracks_stats():
     stats = engine.stats()
     assert stats["prefix"]["entries"] >= 1
     assert stats["kv"]["used_blocks"] >= 1
+
+
+def test_engine_chunks_prefill_and_updates_offsets():
+    engine = ContinuousBatchEngine(prefill_chunk_size=2)
+    tokens = list(range(6))
+    pending = {"req0": tokens.copy()}
+
+    served = engine.run_once(pending)
+
+    # With chunk size 2 and 6 tokens, at least 3 allocations should occur
+    kv_stats = engine.stats()["kv"]
+    assert kv_stats["used_blocks"] >= 3
+    assert served == "req0"
