@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-surface text-primary font-inter antialiased;
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at 20% 20%, #dbeafe 0, rgba(219, 234, 254, 0) 35%),
+    radial-gradient(circle at 80% 0%, #a5b4fc 0, rgba(165, 180, 252, 0) 25%),
+    radial-gradient(circle at 80% 50%, #fee2e2 0, rgba(254, 226, 226, 0) 22%),
+    #0f172a;
+}
+
+.card-shadow {
+  box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.input-shadow {
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.08);
+}
+
+.modal-backdrop {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+textarea {
+  resize: vertical;
+}
